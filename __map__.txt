@@ -1,0 +1,11 @@
+
+
+
+
+index.js
+|--- App
+    |--- PokemonPage [pokemonList]
+        |--- PokemonForm [formData]
+        |--- Search [searchData]
+        |--- PokemonCollection
+            |--- PokemonCard
