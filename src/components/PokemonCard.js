@@ -5,11 +5,11 @@ import { Card } from "semantic-ui-react";
 
 function PokemonCard({pokemon}) {
   const {id, name, hp, sprites} = pokemon
-  let toggle = true
+  let toggle = false
   let image = sprites.front
 
   function handleOnClick(e){
-    image = !toggle ? e.target.src = sprites.back : sprites.back
+    e.target.src = !toggle ? sprites.back : sprites.front
     toggle = !toggle
   }
 
