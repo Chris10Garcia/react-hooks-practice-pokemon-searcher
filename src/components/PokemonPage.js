@@ -9,6 +9,9 @@ const jsonAPI = 'http://localhost:3001/pokemon'
 function PokemonPage() {
 
   const [pokemonList, setPokemonList] = useState([])
+  const [search, setSearch] = useState("")
+
+
 
   useEffect( ()=> {
     fetch(jsonAPI)
@@ -38,15 +41,20 @@ function PokemonPage() {
 
   }
 
+  const filterPokemonList = pokemonList.filter(pokemon => {
+    return pokemon.name.toUpperCase().includes(search.toUpperCase())
+  }
+  )
+
   return (
     <Container>
       <h1>Pokemon Searcher</h1>
       <br />
       <PokemonForm addPokemon={addPokemon}/>
       <br />
-      <Search />
+      <Search setSearch={setSearch}/>
       <br />
-      <PokemonCollection pokemonList={pokemonList} />
+      <PokemonCollection pokemonList={filterPokemonList} />
     </Container>
   );
 }

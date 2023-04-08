@@ -4,7 +4,7 @@ import { Card } from "semantic-ui-react";
 
 
 function PokemonCard({pokemon}) {
-  const {id, name, hp, sprites} = pokemon
+  const {name, hp, sprites} = pokemon
   let toggle = false
   let image = sprites.front
 
