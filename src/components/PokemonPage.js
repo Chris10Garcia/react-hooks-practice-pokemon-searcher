@@ -17,11 +17,32 @@ function PokemonPage() {
 
   }, [])
 
+  function addPokemon(formData){
+
+    formData.sprites = 
+    {
+      front : formData.frontUrl,
+      back : formData.backUrl
+    }
+
+    delete formData.frontUrl
+    delete formData.backUrl
+
+    fetch(jsonAPI, {
+      method: "POST",
+      headers: {"Content-Type" : "application/json"},
+      body: JSON.stringify(formData)
+    })
+    .then(r => r.json())
+    .then(data => setPokemonList([...pokemonList, data]))
+
+  }
+
   return (
     <Container>
       <h1>Pokemon Searcher</h1>
       <br />
-      <PokemonForm />
+      <PokemonForm addPokemon={addPokemon}/>
       <br />
       <Search />
       <br />
